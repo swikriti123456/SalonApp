@@ -1,0 +1,2 @@
+class Usersalon < ApplicationRecord
+end

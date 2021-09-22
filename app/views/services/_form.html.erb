@@ -1,0 +1,35 @@
+	
+	<%= form_with(model: @service, local: true ) do |f| %>
+
+		<p>
+			<%= f.label :service_type %><br/>
+
+			<%= f.text_field :service_type %>
+		</p>
+
+		<p>
+			<%= f.label :price %><br/>
+			<%= f.text_field :price %>
+		</p>
+
+		<p>
+			<%= f.label :working_hr %><br/>
+			<%= f.text_field :working_hr %>
+		</p>
+
+		<p>
+			<%= f.hidden_field :salon_id, :value => @salon.id  %> 
+		</p>
+		<p>
+			<%= f.label :hair_stylist %><br/>
+			<%= f.text_field :hair_stylist %>
+		</p>
+
+		<p>
+			<%= f.label :service_image %><br/>
+			<%= f.file_field :image %>
+		</p>
+		<p>
+			<%= f.submit :Save %>
+		</p>
+	<% end %>

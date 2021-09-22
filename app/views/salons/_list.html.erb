@@ -1,0 +1,47 @@
+<div class="container">
+
+	<div class="container">
+ 
+    <table class="table">
+       <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Location</th>
+            <th scope="col"  style="width: 100px;height: auto;">image</th>
+           <% if current_user && current_user.admin %> 
+              <th scope="col">Add Service</th>
+            <% end %>
+            <th scope="col">Actions </th>
+          </tr>
+        </thead>
+      <%  @salon.each do |salon| %>
+       
+        <tbody>
+          <tr>
+            <th scope="row"><%= salon.name %></th>
+            <td><%= salon.location %></td>
+            <td><%= image_tag(salon.image, style:'width:100%') %></td>
+
+           <% if current_user && current_user.admin %>
+            <td><%= link_to 'Add Service',new_service_path(salon_id: salon) %></td>
+            <% end %>
+
+              <td>
+                <% if current_user && current_user.admin %>
+                  <%= link_to 'update',edit_salon_path(salon),class: 'btn btn-xs btn-warning' %>
+                  <%= link_to 'Delete', salon_path(salon) ,method: :delete , data: { confirm: "are you sure?"} ,class: 'btn btn-xs btn-danger' %>
+                     <%= link_to 'view Services',my_service_path(salon_id: salon) ,class: 'btn btn-xs btn-success'%>
+                <% else %>
+                  <%= link_to 'view Services',my_service_path(salon_id: salon) ,class: 'btn btn-xs btn-success'%>
+                  
+
+              <% end %>
+            </td>
+          </tr>
+      <% end %>    
+        </tbody>
+    </table>
+	
+</div>
+
+</div>

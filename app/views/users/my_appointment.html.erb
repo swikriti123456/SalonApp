@@ -1,0 +1,35 @@
+<h1>Appointment List</h1>
+<div class="container">
+
+	<div class="container">
+      <table class="table">
+         <thead>
+            <tr>
+              <th scope="col">Salon Name</th>
+              <th scope="col">Service type</th>
+              <th scope="col">Hair Stylist</th>
+              <th scope="col">Price</th>
+              <th scope="col">Actions </th>
+              
+            </tr>
+          </thead>
+        <% @appointments.each do |service| %>
+            <% @salon_name.each do |salon| %>
+          <tbody>
+            <tr>
+              <th scope="row"><%= (Salon.find(salon.salon_id)).name %></th>
+            
+              <th><%= service.service_type %></th>
+              <td><%= service.price %></td>
+              <td><%= service.working_hr %></td>
+              
+             
+             <th><%= link_to 'Cancel Appointment', user_salon_path(service), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' %></th>
+          </tr>
+           <% end %>
+      </tbody>
+
+     <% end %>
+    </table>
+  </div>
+</div>

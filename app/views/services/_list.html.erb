@@ -1,0 +1,36 @@
+<div class="container">
+    <table class="table table-hover">
+       <thead>
+          <tr>
+            <th scope="col">Service type</th>
+            <th scope="col">price</th>
+            <th scope="col">working hour</th>
+            <th scope="col" style="width: 100px;height: auto;">image</th>
+            <th scope="col" >Actions </th>
+          </tr>
+        </thead>
+      <%  @service.each do |service| %>
+       
+        <tbody>
+          <tr>
+            <th scope="row"><%= service.service_type %></th>
+            <td><%= service.price %></td>
+            <td><%= service.working_hr %></td>
+            <td><%= image_tag(service.image, style:'width:100%') %></td>
+
+              <td>
+                <% if current_user && current_user.admin %>
+                  <%= link_to 'update',edit_service_path(service) %>
+                  <%= link_to 'Delete', service_path(id: service) ,method: :delete , data: { confirm: "are you sure?"}  %>
+                  
+                <% else %>
+
+                    <%= link_to 'book appointment' ,user_salons_path(user: current_user, salon_id: service.salon_id,service_id: service),class: 'btn btn-xs btn-success',method: :post %>
+
+              <% end %>
+            </td>
+          </tr>
+      <% end %>    
+        </tbody>
+    </table>
+</div>
