@@ -28,6 +28,9 @@ gem 'devise-bootstrap-views', '~> 1.0'
 
 gem 'pry', '~> 0.13.1'
 
+gem 'jquery-rails'
+
+gem 'client_side_validations'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

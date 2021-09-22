@@ -9,12 +9,15 @@ before_action :set_service, only: [:edit, :update, :destroy]
 
 	def create
 		@service = Service.new(service_params)
-
+		@salon = @service.salon
 		if @service.save
 			flash[:notice] = "service was created successfully"
+			redirect_to new_service_path(salon_id: @service.salon_id)
+		else
 			
+			render 'new'
 		end
-		redirect_to new_service_path(salon_id: @service.salon_id)	
+			
 		
 	end
 
